@@ -13,7 +13,7 @@ plugin.tx_yag.settings.themes.library {
 
     controller {
         ItemList {
-            unCachedlist.template = EXT:yag_theme_library/Resources/Private/Templates/ItemList/List.html
+            unCachedList.template = EXT:yag_theme_library/Resources/Private/Templates/ItemList/List.html
         }
     }
     
@@ -29,4 +29,11 @@ plugin.tx_yag.settings.themes.library {
 		    height = 120c
 		}
 	}
+
+
+	## Define CSS Files to include.
+	includeCSS {
+		yag_theme_library = EXT:yag_theme_library/Resources/Public/CSS/Theme.css
+	}
+
 }

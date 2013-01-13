@@ -17,39 +17,39 @@ bool                                                                filtersDontV
 </extlist:comment>
 
 <div class="tx-ptextlist-filterbox" id="tx-ptextlist-filterbox-{filterbox.filterBoxIdentifier}">
-	<extlist:form id="tx-ptextlist-filterbox-form-{filterbox.filterBoxIdentifier}" controller="Filterbox" action="submit" pageUid="{filterbox.filterboxConfiguration.submitToPage}" method="{f:if(condition: '{config.baseConfig.useSession}', then: 'POST', else: 'GET')}">
-		
-		<f:if condition="{filtersDontValidate}">
-			<div class="error">
-				<f:translate key="filterBox.errorInFilter" default="Errors in Filter" />
-			</div>
-		</f:if>
-		
-		<ul class="tx-ptextlist-filters">
-			<f:for each="{filterbox}" as="filter">
-				<f:if condition="{filter.filterConfig.visible}">
-                    <li class="tx-ptextlist-filter pt-extlist-filter-{filter.filterIdentifier}">
-                        <f:render partial="{filter.filterConfig.partialPath}" arguments="{filter : filter}" />
-                    </li>
-                </f:if>
-			</f:for>
-		</ul>
-		
-		<div class="outer-wrapper tx-ptextlist-filterboxcontrols">
-			<div class="outer-field-wrapper">
-				<div class="field-wrapper type-button">
-					<f:if condition="{filterbox.filterboxConfiguration.showSubmit}">
-						<f:form.submit value="{f:translate(key:'filterBox.submitFilters', default:'Submit Filters')}"/>
-					</f:if>
-					<f:if condition="{filterbox.filterboxConfiguration.showReset}">
-						<f:link.action action="reset" arguments="{filterboxIdentifier: filterbox.filterboxIdentifier}" class="reset">
+    <f:form id="tx-ptextlist-filterbox-form-{filterbox.filterBoxIdentifier}" controller="ItemList" action="submitFilter" method="POST">
+        <f:if condition="{filtersDontValidate}">
+            <div class="error">
+                <f:translate key="filterBox.errorInFilter" default="Errors in Filter" />
+            </div>
+        </f:if>
+
+
+        <f:for each="{filterbox}" as="filter">
+            <f:if condition="{filter.filterConfig.visible}">
+                <div class="tx-yag-filter pt-yag-filter-{filter.filterIdentifier}">
+                    <f:render partial="{filter.filterConfig.partialPath}" arguments="{filter : filter}" />
+                </div>
+            </f:if>
+        </f:for>
+
+        <div style="clear:both"></div>
+
+        <div class="outer-wrapper tx-ptextlist-filterboxcontrols">
+            <div class="outer-field-wrapper">
+                <div class="field-wrapper type-button">
+                    <f:if condition="{filterbox.filterboxConfiguration.showSubmit}">
+                        <f:form.submit class="btn btn-primary" value="{f:translate(key:'filterBox.submitFilters', default:'Submit Filters')}"/>
+                    </f:if>
+                    <f:if condition="{filterbox.filterboxConfiguration.showReset}">
+                        <f:link.action action="resetFilter" arguments="{filterboxIdentifier: filterbox.filterboxIdentifier}" class="btn">
 							<span>
 								<f:translate key="filterBox.resetFilters" default="Reset filters" />
 							</span>
-						</f:link.action>
-					</f:if>
-				</div>
-			</div>
-		</div>
-	</extlist:form>
+                        </f:link.action>
+                    </f:if>
+                </div>
+            </div>
+        </div>
+    </f:form>
 </div>

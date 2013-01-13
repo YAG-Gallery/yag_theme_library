@@ -14,28 +14,46 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
     backendConfig {
 
         baseFromClause (
-            tx_yag_domain_model_item
-            INNER JOIN tx_yag_domain_model_itemmeta meta ON tx_yag_domain_model_item.item_meta = meta.uid
-        )
-
-        tables (
-            tx_yag_domain_model_item
+            tx_yag_domain_model_item item
+            INNER JOIN tx_yag_domain_model_itemmeta meta ON item.item_meta = meta.uid
+            INNER JOIN tx_yag_domain_model_album album ON album.uid = item.album
+            INNER JOIN tx_yag_domain_model_gallery gallery ON gallery.uid = album.gallery
         )
     }
 
     fields {
         itemUid {
-            table = tx_yag_domain_model_item
+            table = item
             field = uid
         }
 
         itemTitle {
-            table = tx_yag_domain_model_item
+            table = item
             field = title
         }
 
+		albumUid {
+			table = item
+            field = album
+		}
+
+		albumName {
+			table = album
+			field = name
+		}
+
+		galleryUid {
+			table = gallery
+			field = uid
+		}
+
+		galleryName {
+			table = gallery
+			field = name
+		}
+
         itemDescription {
-            table = tx_yag_domain_model_item
+            table = item
             field = description
         }
 
@@ -53,6 +71,11 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
             table = meta
             field = lens
         }
+
+        iso {
+			table = meta
+			field = iso
+		}
     }
 
     columns {
@@ -63,7 +86,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
         }
     }
 
-    pager.itemsPerPage = 20
+	pager.itemsPerPage < plugin.tx_yag.settings.themes.library.itemList.itemsPerPage
 
     rendererChain {
         rendererConfigs {
@@ -77,25 +100,17 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
     }
 
     filters {
-        filterBox1 {
-            showReset = 0
+        metaFilterBox {
 
             filterConfigs {
 
-                10 < plugin.tx_ptextlist.prototype.filter.string
+                10 < plugin.tx_ptextlist.prototype.filter.select
                 10 {
-                    filterIdentifier = search
-                    fieldIdentifier = *
-                    label = Meta Search
-                    partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/String/StringFilter.html
-                }
-
-                15 < plugin.tx_ptextlist.prototype.filter.select
-                15 {
                     filterIdentifier = artist
                     fieldIdentifier = artist
                     label = Artist
                     inactiveOption = [ Show All ]
+                    multiple = 1
                     partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
                 }
 
@@ -105,6 +120,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
                     fieldIdentifier = camera
                     label = Camera Model
                     inactiveOption = [ Show All ]
+                    multiple = 1
                     partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
                 }
 
@@ -114,8 +130,51 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
                     fieldIdentifier = lens
                     label = Lens
                     inactiveOption = [ Show All ]
+                    multiple = 1
                     partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
                 }
+
+                40 < plugin.tx_ptextlist.prototype.filter.select
+				40 {
+					filterIdentifier = iso
+					fieldIdentifier = iso
+					label = ISO
+					inactiveOption = [ Show All ]
+					multiple = 1
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
+				}
+
+				100 < plugin.tx_ptextlist.prototype.filter.select
+				100 {
+					filterIdentifier = gallery
+					fieldIdentifier = galleryUid, galleryName
+					label = Gallery
+					filterField = galleryUid
+					displayFields = galleryName
+					inactiveOption = [ Show All ]
+					multiple = 1
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
+				}
+
+				110 < plugin.tx_ptextlist.prototype.filter.select
+				110 {
+					filterIdentifier = album
+					fieldIdentifier = albumUid, albumName
+					label = Album
+					filterField = albumUid
+					displayFields = albumName
+					inactiveOption = [ Show All ]
+					multiple = 1
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
+				}
+
+				200 < plugin.tx_ptextlist.prototype.filter.string
+				200 {
+					filterIdentifier = search
+					fieldIdentifier = *
+					label = Meta Search
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/String/StringFilter.html
+				}
             }
         }
     }
