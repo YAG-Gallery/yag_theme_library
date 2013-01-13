@@ -8,4 +8,4 @@
 ####################################################
 
 # YAG Library Theme
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_filterdemo/Configuration/TypoScript/Themes/FilterDemo/Theme.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_library/Configuration/TypoScript/Themes/Library/Theme.ts">

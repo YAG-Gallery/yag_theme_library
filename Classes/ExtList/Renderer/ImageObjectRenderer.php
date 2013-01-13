@@ -24,7 +24,7 @@
 ***************************************************************/
 
 
-class Tx_YagThemeLibrary_ExtList_Renderer_ImageObjectRenderer implements Tx_PtExtlist_Domain_Renderer_ConfigurableRendererInterface {
+class Tx_YagThemeLibrary_ExtList_Renderer_ImageObjectRenderer extends Tx_PtExtlist_Domain_Renderer_AbstractRenderer {
 
 	/**
 	 * @var Tx_Yag_Domain_Repository_ItemRepository
@@ -36,17 +36,21 @@ class Tx_YagThemeLibrary_ExtList_Renderer_ImageObjectRenderer implements Tx_PtEx
 	 */
 	protected $yagConfigurationBuilder;
 
+
+	/**
+	 * @param Tx_Yag_Domain_Repository_ItemRepository $itemRepository
+	 */
+	public function injectItemRepository(Tx_Yag_Domain_Repository_ItemRepository $itemRepository) {
+		$this->itemRepository = $itemRepository;
+	}
+
+
+
 	/**
 	 * @return void
 	 */
 	public function initRenderer() {
-		$settings = $this->getYAGSettings();
-		$settings['theme'] = 'default';
-		
-		Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::injectSettings($settings);
-		$this->yagConfigurationBuilder = Tx_Yag_Domain_Configuration_ConfigurationBuilderFactory::getInstance('sortedItemList', 'filterDemo');
-
-		$this->itemRepository = t3lib_div::makeInstance('Tx_Yag_Domain_Repository_ItemRepository');
+		$this->yagConfigurationBuilder = Tx_Yag_Domain_Context_YagContextFactory::getInstance();
 	}
 
 
@@ -76,52 +80,6 @@ class Tx_YagThemeLibrary_ExtList_Renderer_ImageObjectRenderer implements Tx_PtEx
 		}
 
 		return $listData;
-	}
-
-
-	
-	/**
-	 * Renders the column captions out of the TS definition
-	 *
-	 * @param Tx_PtExtlist_Domain_Model_List_Header_ListHeader $listHeader
-	 * @return Tx_PtExtlist_Domain_Model_List_Header_ListHeader
-	 */
-	public function renderCaptions(Tx_PtExtlist_Domain_Model_List_Header_ListHeader $listHeader) {
-		// TODO: Implement renderCaptions() method.
-	}
-
-
-	
-	/**
-	 * Returns a rendered aggregate list for a given row of aggregates
-	 *
-	 * @param Tx_PtExtlist_Domain_Model_List_ListData $aggregateListData
-	 * @return Tx_PtExtlist_Domain_Model_List_ListData Rendererd List of aggregate rows
-	 */
-	public function renderAggregateList(Tx_PtExtlist_Domain_Model_List_ListData $aggregateListData) {
-		// TODO: Implement renderAggregateList() method.
-	}
-
-
-
-	/**
-	 * @return array
-	 */
-	protected function getYAGSettings() {
-		$setup = $GLOBALS['TSFE']->tmpl->setup;
-		$tsSettings =  $setup['plugin.']['tx_yag.']['settings.'];
-		return Tx_Extbase_Utility_TypoScript::convertTypoScriptArrayToPlainArray($tsSettings);
-	}
-
-
-
-	/**
-	 * Injecotr for render configuration
-	 *
-	 * @param Tx_PtExtlist_Domain_Configuration_Renderer_RendererConfig $rendererConfiguration
-	 */
-	public function injectConfiguration(Tx_PtExtlist_Domain_Configuration_Renderer_RendererConfig $rendererConfiguration) {
-		// TODO: Implement injectConfiguration() method.
 	}
 }
 ?>
