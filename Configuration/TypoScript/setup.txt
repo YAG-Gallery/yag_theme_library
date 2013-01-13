@@ -1,0 +1,11 @@
+####################################################
+# General configuration root 
+#
+# @author Daniel Lienert <daniel@lienert.cc> 
+# @author Michael Knoll <mimi@kaktusteam.de>
+# @package YAG
+# @subpackage Typoscript
+####################################################
+
+# YAG Library Theme
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_filterdemo/Configuration/TypoScript/Themes/FilterDemo/Theme.ts">

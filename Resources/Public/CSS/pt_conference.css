@@ -1,0 +1,336 @@
+/*
+* FlUID
+*/
+
+.typo3-message {
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    border: 1px solid;
+    padding: 12px 12px 12px 36px;
+}
+.typo3-message a {
+    text-decoration: underline;
+}
+.typo3-message .message-header {
+    font-size: 11px;
+    font-weight: bold;
+}
+.message-notice {
+    background-color: #F6F7FA;
+    background-image: url("/typo3/sysext/t3skin/icons/gfx/notice.png");
+    border-color: #C2CBCF;
+    color: #777777;
+}
+.message-notice a {
+    color: #777777;
+}
+.message-information {
+    background-color: #EAF7FF;
+    background-image: url("/typo3/sysext/t3skin/icons/gfx/information.png");
+    border-color: #C5DBE6;
+    color: #4C73A1;
+}
+.message-information a {
+    color: #4C73A1;
+}
+.message-ok {
+    background-color: #CDEACA;
+    background-image: url("/typo3/sysext/t3skin/icons/gfx/ok.png");
+    border-color: #58B548;
+    color: #3B7826;
+}
+.message-ok a {
+    color: #3B7826;
+}
+.message-warning {
+    background-color: #FBF6DE;
+    background-image: url("/typo3/sysext/t3skin/icons/gfx/warning.png");
+    border-color: #B1905C;
+    color: #9E7D4A;
+}
+.message-warning a {
+    color: #9E7D4A;
+}
+.message-error {
+    background-color: #F6D3CF;
+    background-image: url("/typo3/sysext/t3skin/icons/gfx/error.png");
+    border-color: #D66C68;
+    color: #AA0225;
+}
+.message-error a {
+    color: #AA0225;
+}
+
+
+/*
+* PT_EXTLIST
+*/
+
+table.tx-ptextlist-list {
+	width: 99.9%;
+	margin-left: 1px;
+}
+
+table.tx-ptlist-list-standard th {
+	border-bottom: 1px solid #BFBFBF;
+	border-left: 1px solid #BFBFBF;
+}
+
+table.tx-ptextlist-list-standard th {
+	background: #3E3E3E;
+	border:  1px solid #bfbfbf;
+}
+
+table.tx-ptextlist-list-standard td {
+	padding: 2px 0px 2px 4px;
+	margin:  0px;
+	border:  1px solid #bfbfbf;
+	vertical-align: top;
+}
+
+
+table.tx-ptextlist-list-standard tr.odd {
+	background-color: #ffffff;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+table.tx-ptextlist-list-standard tr.even {
+	background-color:#F5F5F5;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+tr.tx-ptextlist-aggregaterow td p {
+	background-color: #FFF;
+	font-weight: bold;
+    color: #393939;
+
+}
+
+
+table.tx-ptextlist-list-standard {
+	border-collapse:collapse;
+	border-spacing:0;
+	font-size:12px;
+	clear:both;
+}
+
+th.tx-ptextlist-list-header {
+	padding: 4px;
+	white-space: nowrap;
+	background: #3E3E3E;
+}
+
+.tx-ptextlist-filter{
+	float: left;
+	padding: 3px;
+    margin: 0;
+	list-style-type: none !important;
+    background: none;
+    border:none;
+}
+
+.tx-ptextlist-filters {
+	list-style-type: none !important;
+    margin: 0;
+}
+
+.tx-ptextlist-filterboxcontrols {
+	float: left;
+	padding:18px 0 0 10px;
+}
+
+
+.tx-ptextlist-filterbox{
+    border-bottom: 1px solid #909090;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding-bottom: 13px;
+}
+
+.alignRight, .alignRight p {
+    text-align: right;
+}
+
+
+/* Pager */
+.tx-ptextlist-pager-wrapper {
+    border-top: 1px solid #909090;
+    margin-top: 20px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.tx-ptextlist-pager {
+    margin-left: 0;
+    text-align: center;
+}
+
+.tx-ptextlist-pager li {
+    display: inline;
+}
+
+.tx-ptextlist-pager li.number a, .tx-ptextlist-pager li a span, .tx-ptextlist-pager li.number .cur, .tx-ptextlist-pager li.number .fill{
+    background: url("../Images/b-pager.png") repeat-x scroll 0 0 transparent;
+    border: 1px solid #BFBFBF;
+    color: #000000;
+    display: inline-block;
+    font-size: 11px;
+    height: 23px;
+    width: 24px;
+    line-height: 23px;
+    margin-right: 6px;
+    padding: 0;
+    text-align: center;
+}
+
+.tx-ptextlist-pager li.number a:hover, .tx-ptextlist-pager li a:hover span {
+    color: #FF8700;
+}
+
+.tx-ptextlist-pager li.number .fill {
+    color: #BFBFBF;
+}
+
+.tx-ptextlist-pager li.number .cur {
+    border: 1px solid #393939;
+}
+
+.tx-ptextlist-pager li a {
+    text-decoration: none;
+}
+
+
+.tx-ptextlist-pager-item-display {
+    color: #393939;
+}
+
+.tx-ptextlist-pager-item-display .first, .tx-ptextlist-pager-item-display .last, .tx-ptextlist-pager-item-display .count {
+    color: #707070;
+}
+
+.type-button input, .tx-ptextlist-list-exportLink a{
+	-moz-user-select: -moz-none;
+    background: url("../Images/s-buttons.png") no-repeat scroll 0 0 transparent;
+    border: 1px solid #E87C0C;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 11px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 12px;
+    text-decoration: none;
+    vertical-align: middle;
+}
+	
+.type-button input:hover,.tx-ptextlist-list-exportLink a:hover {
+    background-image: -moz-linear-gradient(top, #636363, #2e2e2e); /* FF3.6 */
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #636363),color-stop(1, #2e2e2e)); /* Saf4+, Chrome */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#CCCCCC', EndColorStr='#F5F5F5'); /* IE6,IE7 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#CCCCCC', EndColorStr='#F5F5F5')"; /* IE8 */
+    border-top-color: #AAAAAA !important;
+    border-right-color: #DDDDDD !important;
+    border-bottom-color: #DDDDDD !important;
+    border-left-color: #AAAAAA !important;
+    color: #ffffff;
+}
+
+.tx-ptextlist-list-exportLink {
+    padding-bottom: 10px;
+}
+
+select {
+    min-width: 100px;
+}
+
+input[type="text"], input[type="password"], textarea, select {
+    border: 1px solid #BFBFBF !important;
+}
+
+input[type="text"], input[type="password"] {
+    height:19px;
+}
+
+
+.pt-extlist-field-commentColumn textarea {
+    font-size: 12px;
+}
+	
+.redBox {
+    background-color: red;
+    width:16px;
+    height:32px;
+}
+
+.greenBox {
+    background-color: green;
+    width:16px;
+    height:32px;
+}
+
+.grayBox {
+    background-color: #AAAAAA;
+    width:16px;
+    height:32px;
+}
+
+.tx-ptextlist-field-paymentIndicatorColumn {
+    padding: 0 !important;
+}
+
+label {
+    font-weight: bold;
+    color: #393939;
+}
+
+.tx-ptextlist-list-header, .tx-ptextlist-list-header a {
+    color: #393939;
+}
+
+.tx-ptextlist-field-sumOpenColumn, .tx-ptextlist-field-sumPaidColumn, .tx-ptextlist-field-sumGrossColumn, .tx-ptextlist-field-sumCancledColumn {
+    text-align: right;
+}
+
+.pt-extlist-pager {
+    text-align: center;
+}
+
+.pt-extlist-pager-item-display {
+    padding-top:4px;
+}
+	
+.errMessage {
+	border-top: 1px solid #9C3131;
+	border-bottom: 1px solid #9C3131;
+	padding: 3px;
+	margin: 5px;
+	font-weight: bold;
+	background-color: #F4CFCF;
+	color: #9C3131;
+	min-height: 16px;
+	text-align: center;
+}
+
+.sucMessage {
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+	padding: 3px;
+	background-color: #C8FFC8;
+	margin: 5px;
+	font-weight: bold;
+	color: Green;
+	min-height: 16px;
+	text-align: center;
+}
+
+
+/*
+Special Columns
+*/
+.tx-ptextlist-field-count {
+	width: 30px;
+}
+
+.tx-ptextlist-field-typeName {
+	width:200px;
+}
