@@ -3,3 +3,11 @@
     float:left;
     width: 25%;
 }
+
+/* Filters | TagClud */
+.tx-ptextlist-filter-tagCloud-list li {
+    float: left;
+    list-style: none outside none;
+    margin-right: 6px;
+    margin-top: 3px;
+}

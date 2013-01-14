@@ -18,6 +18,16 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
             INNER JOIN tx_yag_domain_model_itemmeta meta ON item.item_meta = meta.uid
             INNER JOIN tx_yag_domain_model_album album ON album.uid = item.album
             INNER JOIN tx_yag_domain_model_gallery gallery ON gallery.uid = album.gallery
+            LEFT JOIN  tx_yag_item_tag_mm tagmm ON tagmm.uid_local = item.uid
+            LEFT JOIN  tx_yag_domain_model_tag tag ON tag.uid = tagmm.uid_foreign
+        )
+
+        baseWhereClause (
+        	item.uid > 0
+        )
+
+        baseGroupByClause (
+        	item.uid
         )
     }
 
@@ -72,10 +82,51 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
             field = lens
         }
 
+		focalLength {
+            table = meta
+            field = focal_length
+        }
+
         iso {
 			table = meta
 			field = iso
 		}
+
+		shutterSpeed {
+			table = meta
+			field = shutter_speed
+		}
+
+		aperture {
+			table = meta
+			field = aperture
+		}
+
+		captureDate {
+			table = meta
+			field = capture_date
+		}
+
+		tag {
+			table = tag
+			field = name
+		}
+
+		tagCount {
+			table = tag
+			field = count
+		}
+
+		tagsCombined {
+			special (
+				SELECT GROUP_CONCAT(tagInner.name)
+				FROM tx_yag_domain_model_tag tagInner
+				LEFT JOIN tx_yag_item_tag_mm tagInnerMm ON tagInner.uid = tagInnerMm.uid_foreign
+                WHERE tagInnerMm.uid_local = item.uid
+                GROUP BY item.uid
+            )
+		}
+
     }
 
     columns {
@@ -168,11 +219,20 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Options/SelectFilter.html
 				}
 
+				120 < plugin.tx_ptextlist.prototype.filter.tagCloud
+				120 {
+					filterIdentifier = tagCloud
+					partialPath = EXT:yag_theme_library/Resources/Private/Partials/Filter/Options/TagCloudFilter.html
+					label = Tags
+					fieldIdentifier = tag
+					countFieldIdentifier = tagCount
+				}
+
 				200 < plugin.tx_ptextlist.prototype.filter.string
 				200 {
 					filterIdentifier = search
 					fieldIdentifier = *
-					label = Meta Search
+					label = Search
 					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/String/StringFilter.html
 				}
             }
