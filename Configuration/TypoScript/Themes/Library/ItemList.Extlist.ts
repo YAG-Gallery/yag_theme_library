@@ -198,9 +198,8 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 				100 < plugin.tx_ptextlist.prototype.filter.select
 				100 {
 					filterIdentifier = gallery
-					fieldIdentifier = galleryUid, galleryName
+					fieldIdentifier = galleryUid
 					label = Gallery
-					filterField = galleryUid
 					displayFields = galleryName
 					inactiveOption = [ Show All ]
 					multiple = 1
