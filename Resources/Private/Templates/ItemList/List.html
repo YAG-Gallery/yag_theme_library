@@ -12,35 +12,26 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 @package YAG
 @author Daniel Lienert <daniel@lienert.cc>
 -->
-</extlist:comment>
 
-<f:layout name="Default" />
-<f:section name="main">
+<f:for each="{config.themeConfig.CSSFiles}" as="file">
+    <link rel="stylesheet" type="text/css" href="{yag:Resource.File(path:file)}" media="all">
+</f:for>
 
-    <f:for each="{config.themeConfig.CSSFiles}" as="file">
-        <link rel="stylesheet" type="text/css" href="{yag:Resource.File(path:file)}" media="all">
+    <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
+
+<div class="tx-yag-items">
+    <f:for each="{listData}" key="rowIndex" as="listRow">
+        <div class="tx-yag-thumb-outerframe tx-yag-item-thumb-outerframe" style="width:{config.itemListConfig.columnRelativeWidth}%">
+            <f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: listRow.image.value, rowIndex: listRow.specialValues.absoluteRowIndex, pager: pager, pagerCollection:pagerCollection}" />
+        </div>
     </f:for>
+</div>
 
+<div style="clear:both;">&nbsp;</div>
 
-
-    <f:for each="{filterBoxCollection}" as="filterBox">
-        <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBox}"/>
-    </f:for>
-
-    <div class="tx-yag-items">
-        <f:for each="{listData}" key="rowIndex" as="listRow">
-            <div class="tx-yag-thumb-outerframe tx-yag-item-thumb-outerframe" style="width:{config.itemListConfig.columnRelativeWidth}%">
-                <f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: listRow.image.value, rowIndex: listRow.specialValues.absoluteRowIndex, pager: pager, pagerCollection:pagerCollection}" />
-            </div>
-        </f:for>
+<f:if condition="{config.settings.itemList.showPager}">
+    <div class="tx-yag-pager">
+        <f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
     </div>
+</f:if>
 
-    <div style="clear:both;">&nbsp;</div>
-
-    <f:if condition="{config.settings.itemList.showPager}">
-		<div class="tx-yag-pager">
-			<f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
-		</div>
-    </f:if>
-
-</f:section>

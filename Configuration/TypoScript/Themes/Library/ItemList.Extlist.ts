@@ -32,6 +32,12 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
     }
 
     fields {
+
+    	pid {
+    		table = item
+    		field = pid
+    	}
+
         itemUid {
             table = item
             field = uid
@@ -142,7 +148,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
     rendererChain {
         rendererConfigs {
             100 {
-                rendererClassName = Tx_YagThemeLibrary_ExtList_Renderer_ImageObjectRenderer
+                rendererClassName = Tx_Yag_Extlist_Renderer_ImageObjectRenderer
             }
             110 {
 				rendererClassName = Tx_Yag_Extlist_Renderer_ImageListRenderer
@@ -151,8 +157,19 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
     }
 
     filters {
-        metaFilterBox {
 
+		internalFilters {
+			filterConfigs {
+				10 {
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Special/ProxyFilter.html
+					filterClassName = Tx_Yag_Extlist_Filter_PidFilter
+					filterIdentifier = pidFilter
+					fieldIdentifier = pid
+				}
+			}
+		}
+
+        metaFilterBox {
             filterConfigs {
 
                 10 < plugin.tx_ptextlist.prototype.filter.select

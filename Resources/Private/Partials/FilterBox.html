@@ -34,12 +34,13 @@ bool                                                                filtersDontV
         </f:for>
 
         <div style="clear:both"></div>
+        <br/>
 
         <div class="outer-wrapper tx-ptextlist-filterboxcontrols">
             <div class="outer-field-wrapper">
                 <div class="field-wrapper type-button">
                     <f:if condition="{filterbox.filterboxConfiguration.showSubmit}">
-                        <f:form.submit class="btn btn-primary" value="{f:translate(key:'filterBox.submitFilters', default:'Submit Filters')}"/>
+                        <f:form.submit class="btn" value="{f:translate(key:'filterBox.submitFilters', default:'Submit Filters')}"/>
                     </f:if>
                     <f:if condition="{filterbox.filterboxConfiguration.showReset}">
                         <f:link.action action="resetFilter" arguments="{filterboxIdentifier: filterbox.filterboxIdentifier}" class="btn">
