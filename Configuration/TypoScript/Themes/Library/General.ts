@@ -35,5 +35,4 @@ plugin.tx_yag.settings.themes.library {
 	includeCSS {
 		yag_theme_library = EXT:yag_theme_library/Resources/Public/CSS/Theme.css
 	}
-
 }

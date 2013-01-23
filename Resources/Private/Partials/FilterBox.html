@@ -17,7 +17,7 @@ bool                                                                filtersDontV
 </extlist:comment>
 
 <div class="tx-ptextlist-filterbox" id="tx-ptextlist-filterbox-{filterbox.filterBoxIdentifier}">
-    <f:form id="tx-ptextlist-filterbox-form-{filterbox.filterBoxIdentifier}" controller="ItemList" action="submitFilter" method="POST">
+    <f:form id="tx-ptextlist-filterbox-form-{filterbox.filterBoxIdentifier}" controller="ItemList" action="submitFilter" method="POST" noCache="1">
         <f:if condition="{filtersDontValidate}">
             <div class="error">
                 <f:translate key="filterBox.errorInFilter" default="Errors in Filter" />
