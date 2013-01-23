@@ -12,7 +12,7 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'YAG Library Theme',
-	'description' => '',
+	'description' => 'The library theme for YAG is a showcase for the possibilities of its foundation, pt_extlist.',
 	'category' => 'plugin',
 	'author' => 'Daniel Lienert',
 	'author_email' => 'daniel@lienert.cc',
@@ -22,14 +22,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
-	'state' => 'alpha',
+	'state' => 'beta',
 	'internal' => '',
 	'uploadfolder' => '0',
 	'createDirs' => '',
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.0.1',
+	'version' => '0.1.0-dev',
 	'constraints' => array(
 		'depends' => array(
 			'cms' => '',
