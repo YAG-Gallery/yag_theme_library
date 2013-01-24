@@ -7,7 +7,9 @@
 
 plugin.tx_yag.settings.themes.library.itemList {
 
-	pagerPartial = EXT:yag/Resources/Private/Partials/Pager/Delta.html
+	imageThumbPartial = EXT:yag_theme_library/Resources/Private/Partials/Image/LightboxImageThumb.html
+
+	pagerPartial = EXT:yag_theme_library/Resources/Private/Partials/Pager/Delta.html
 	pagerIdentifier = delta
 
 	itemsPerPage = 20

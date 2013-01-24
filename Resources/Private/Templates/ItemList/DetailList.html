@@ -15,14 +15,9 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-<f:for each="{config.themeConfig.CSSFiles}" as="file">
-    <link rel="stylesheet" type="text/css" href="{yag:Resource.File(path:file)}" media="all">
-</f:for>
-
 
 <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
-
-
+<br />
 
 <table class="table table-striped">
     <thead>
@@ -106,4 +101,19 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
     <div class="tx-yag-pager">
         <f:render partial="{config.itemListConfig.pagerPartial}" arguments="{action: listAction, controller: 'ItemList', pager: pager, pagerCollection: pagerCollection, itemsText: '{f:translate(key:\'tx_yag_domain_model_album.items\')}'}" />
     </div>
+</f:if>
+
+
+<f:if condition="{config.settings.includeJSInTemplate}">
+    <f:for each="{config.settings.templateIncludeJS}" as="file">
+        <script src="{yag:Resource.File(path:file)}" type="text/javascript"></script>
+    </f:for>
+</f:if>
+
+<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" addToHead="0"/>
+
+<f:if condition="{config.settings.includeCSSInTemplate}">
+    <f:for each="{config.settings.templateIncludeCSS}" as="file">
+        <link rel="stylesheet" type="text/css" href="{yag:Resource.File(path:file)}" media="all">
+    </f:for>
 </f:if>

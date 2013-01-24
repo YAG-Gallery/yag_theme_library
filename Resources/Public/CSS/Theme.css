@@ -11,3 +11,8 @@
     margin-right: 6px;
     margin-top: 3px;
 }
+
+.tx-yag-thumb-innerframe img, .tx-yag-image img {
+    padding: 0;
+    border-radius: 3px;
+}
