@@ -45,7 +45,7 @@ plugin.tx_yag.settings.themes.library {
 	includeCSSInTemplate = 1
 
 	templateIncludeJS {
-		jQuery  = 			EXT:yag/Resources/Public/Js/JQuery/jquery-1.6.4.min.js
+		#jQuery  = 			EXT:yag/Resources/Public/Js/JQuery/jquery-1.8.3.min.js
 		jqueryFancyBox  =  	EXT:yag/Resources/Public/Js/JQuery/Fancybox/jquery.fancybox-1.3.4.pack.js
 		jqueryMouseWheel  = EXT:yag/Resources/Public/Js/JQuery/Fancybox/jquery.mousewheel-3.0.4.pack.js
 		jqueryEasing  =  	EXT:yag/Resources/Public/Js/JQuery/Fancybox/jquery.easing-1.3.pack.js

@@ -78,14 +78,23 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
                             <dt>ISO</dt>
                             <dd>{listRow.iso}&nbsp;</dd>
 
-                            <dt>Tags</dt>
-                            <dd>
-                                <f:if condition="{listRow.tagsCombined.value}">
+                            <f:if condition="{listRow.tagsCombined.value}">
+                                <dt>Tags</dt>
+                                <dd>
                                     <f:for each="{ptx:explode(string: listRow.tagsCombined.value, delimiter:',')}" as="tag">
                                         <f:link.action action="submitFilter" arguments="{extlist:namespace.GPArray(nameSpace:'itemList{config.contextIdentifier}.filters.metaFilterBox.tagCloud' arguments:'filterValues:{tag}')}">{tag}</f:link.action>
                                     </f:for>
+                                </dd>
+                            </f:if>
+
+                            <f:alias map="{stars:config.settings.item.interaction.stars}">
+                                <f:if condition="{stars.show}">
+                                    <dt>Rating</dt>
+                                    <dd>
+                                        <f:render partial="{stars.path}" arguments="{item: image, pager:pager, config:config, settings:stars.settings}" />
+                                    </dd>
                                 </f:if>
-                            </dd>
+                            </f:alias>
                         </dl>
                     </td>
                 </tr>
@@ -110,7 +119,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
     </f:for>
 </f:if>
 
-<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" addToHead="0"/>
+<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" position="header"/>
 
 <f:if condition="{config.settings.includeCSSInTemplate}">
     <f:for each="{config.settings.templateIncludeCSS}" as="file">
