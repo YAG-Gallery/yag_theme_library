@@ -13,17 +13,25 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 	backendConfig < plugin.tx_ptextlist.prototype.backend.typo3
     backendConfig {
 
+		tables (
+			tx_yag_domain_model_item	item,
+			tx_yag_domain_model_album	album,
+			tx_yag_domain_model_gallery	gallery
+		)
+
         baseFromClause (
             tx_yag_domain_model_item item
-            INNER JOIN tx_yag_domain_model_itemmeta meta ON item.item_meta = meta.uid
             INNER JOIN tx_yag_domain_model_album album ON album.uid = item.album
             INNER JOIN tx_yag_domain_model_gallery gallery ON gallery.uid = album.gallery
             LEFT JOIN  tx_yag_item_tag_mm tagmm ON tagmm.uid_local = item.uid
             LEFT JOIN  tx_yag_domain_model_tag tag ON tag.uid = tagmm.uid_foreign
+            LEFT JOIN tx_yag_domain_model_itemmeta meta ON item.item_meta = meta.uid
         )
 
         baseWhereClause (
         	item.uid > 0
+        	AND album.hide = 0
+        	AND gallery.hide = 0
         )
 
         baseGroupByClause (
