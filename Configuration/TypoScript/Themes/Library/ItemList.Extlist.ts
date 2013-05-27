@@ -166,6 +166,20 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 					filterIdentifier = pidFilter
 					fieldIdentifier = pid
 				}
+
+				20 {
+                    partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Special/ProxyFilter.html
+                    filterClassName = Tx_Yag_Extlist_Filter_GalleryFilter
+                    filterIdentifier = galleryFilter
+                    fieldIdentifier = albumUid
+                }
+
+				30 {
+					partialPath = EXT:pt_extlist/Resources/Private/Partials/Filter/Special/ProxyFilter.html
+					filterClassName = Tx_Yag_Extlist_Filter_AlbumFilter
+					filterIdentifier = albumFilter
+					fieldIdentifier = albumUid
+				}
 			}
 		}
 
