@@ -25,8 +25,8 @@ plugin.tx_yag.settings.themes.library {
 		}
 
 		thumb {
-		    width = 120c
-		    height = 120c
+		    width = 200c
+		    height = 200c
 		}
 	}
 

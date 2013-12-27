@@ -151,7 +151,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
         }
     }
 
-	pager.itemsPerPage = 5
+	pager.itemsPerPage = 20
 
     rendererChain {
         rendererConfigs {
