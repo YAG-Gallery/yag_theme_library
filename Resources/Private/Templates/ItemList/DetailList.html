@@ -19,92 +19,91 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
 <br />
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <td>#</td>
-            <td></td>
-            <td>Item</td>
-            <td>Details</td>
-        </tr>
-    </thead>
-    <tbody>
-        <f:for each="{listData}" key="rowIndex" as="listRow">
-            <f:alias map="{image: listRow.image.value}">
-                <tr>
-                    <td>{image.uid}</td>
-                    <td><f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: image, pager: pager, pagerCollection:pagerCollection}" /></td>
-                    <td>
-                        <dl class="dl-horizontal">
-                            <dt>Title</dt>
-                            <dd>{image.title}&nbsp;</dd>
+<div id="yag-{config.contextIdentifier}" class="yag-list-wrap yag-gallery" data-yag-gallery-settings='{yag:Javascript.JsonSettings(tsPath:"javaScriptSettings")}'>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td class="tx-yag-library-imagecolumn"></td>
+				<td>Item</td>
+				<td>Details</td>
+			</tr>
+		</thead>
+		<tbody>
+			<f:for each="{listData}" key="rowIndex" as="listRow">
+				<f:alias map="{image: listRow.image.value}">
+					<tr>
+						<td>{image.uid}</td>
+							<f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: image, pager: pager, pagerCollection:pagerCollection}" /></td>
+						<td>
+							<dl class="dl-horizontal">
+								<dt>Title</dt>
+								<dd>{image.title}&nbsp;</dd>
 
-                            <dt>Description</dt>
-                            <dd>{image.description}&nbsp;</dd>
+								<dt>Description</dt>
+								<dd>{image.description}&nbsp;</dd>
 
-                            <dt>Author</dt>
-                            <dd>{listRow.artist}&nbsp;</dd>
+								<dt>Author</dt>
+								<dd>{listRow.artist}&nbsp;</dd>
 
-                            <dt>Capture Date</dt>
-                            <dd><ptx:format.timestamp format="%d.%m.%Y %H:%M" timestamp="{listRow.captureDate.value}"/></dd>
+								<dt>Capture Date</dt>
+								<dd><ptx:format.timestamp format="%d.%m.%Y %H:%M" timestamp="{listRow.captureDate.value}"/></dd>
 
-                            <dt>Gallery</dt>
-                            <dd>{listRow.galleryName}&nbsp;</dd>
+								<dt>Gallery</dt>
+								<dd>{listRow.galleryName}&nbsp;</dd>
 
-                            <dt>Album</dt>
-                            <dd>{listRow.albumName}&nbsp;</dd>
+								<dt>Album</dt>
+								<dd>{listRow.albumName}&nbsp;</dd>
 
-                            <dt>Original</dt>
-                            <dd><a target="_blank" href="{image.sourceUri}">{image.width}px x {image.height}px, <ptx:format.fileSize>{image.fileSize}</ptx:format.fileSize></a></dd>
-                        </dl>
+								<dt>Original</dt>
+								<dd><a target="_blank" href="{image.sourceUri}">{image.width}px x {image.height}px, <ptx:format.fileSize>{image.fileSize}</ptx:format.fileSize></a></dd>
+							</dl>
 
-                    </td>
-                    <td>
-                        <dl class="dl-horizontal">
-                            <dt>Camera</dt>
-                            <dd>{listRow.camera}&nbsp;</dd>
+						</td>
+						<td>
+							<dl class="dl-horizontal">
+								<dt>Camera</dt>
+								<dd>{listRow.camera}&nbsp;</dd>
 
-                            <dt>Lens</dt>
-                            <dd>{listRow.lens}&nbsp;
-                                <f:if condition="{listRow.focalLength.value}"> @ {listRow.focalLength.value}mm</f:if>
-                            </dd>
+								<dt>Lens</dt>
+								<dd>{listRow.lens}&nbsp;
+									<f:if condition="{listRow.focalLength.value}"> @ {listRow.focalLength.value}mm</f:if>
+								</dd>
 
-                            <dt>Shutter Speed</dt>
-                            <dd>{listRow.shutterSpeed}&nbsp;</dd>
+								<dt>Shutter Speed</dt>
+								<dd>{listRow.shutterSpeed}&nbsp;</dd>
 
-                            <dt>Aperture</dt>
-                            <dd>{listRow.aperture}&nbsp;</dd>
+								<dt>Aperture</dt>
+								<dd>{listRow.aperture}&nbsp;</dd>
 
-                            <dt>ISO</dt>
-                            <dd>{listRow.iso}&nbsp;</dd>
+								<dt>ISO</dt>
+								<dd>{listRow.iso}&nbsp;</dd>
 
-                            <f:if condition="{listRow.tagsCombined.value}">
-                                <dt>Tags</dt>
-                                <dd>
-                                    <f:for each="{ptx:explode(string: listRow.tagsCombined.value, delimiter:',')}" as="tag">
-                                        <f:link.action action="submitFilter" arguments="{extlist:namespace.GPArray(nameSpace:'itemList{config.contextIdentifier}.filters.metaFilterBox.tagCloud' arguments:'filterValues:{tag}')}">{tag}</f:link.action>
-                                    </f:for>
-                                </dd>
-                            </f:if>
+								<f:if condition="{listRow.tagsCombined.value}">
+									<dt>Tags</dt>
+									<dd>
+										<f:for each="{ptx:explode(string: listRow.tagsCombined.value, delimiter:',')}" as="tag">
+											<f:link.action action="submitFilter" arguments="{extlist:namespace.GPArray(nameSpace:'itemList{config.contextIdentifier}.filters.metaFilterBox.tagCloud' arguments:'filterValues:{tag}')}">{tag}</f:link.action>
+										</f:for>
+									</dd>
+								</f:if>
 
-                            <f:alias map="{stars:config.settings.item.interaction.stars}">
-                                <f:if condition="{stars.show}">
-                                    <dt>Rating</dt>
-                                    <dd>
-                                        <f:render partial="{stars.path}" arguments="{item: image, pager:pager, config:config, settings:stars.settings}" />
-                                    </dd>
-                                </f:if>
-                            </f:alias>
-                        </dl>
-                    </td>
-                </tr>
-            </f:alias>
-        </f:for>
-    </tbody>
-</table>
-
-
-<div style="clear:both;">&nbsp;</div>
+								<f:alias map="{stars:config.settings.item.interaction.stars}">
+									<f:if condition="{stars.show}">
+										<dt>Rating</dt>
+										<dd>
+											<f:render partial="{stars.path}" arguments="{item: image, pager:pager, config:config, settings:stars.settings}" />
+										</dd>
+									</f:if>
+								</f:alias>
+							</dl>
+						</td>
+					</tr>
+				</f:alias>
+			</f:for>
+		</tbody>
+	</table>
+</div>
 
 <f:if condition="{config.settings.itemList.showPager}">
     <div class="tx-yag-pager">
@@ -118,8 +117,6 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
         <script src="{yag:Resource.File(path:file)}" type="text/javascript"></script>
     </f:for>
 </f:if>
-
-<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" position="header"/>
 
 <f:if condition="{config.settings.includeCSSInTemplate}">
     <f:for each="{config.settings.templateIncludeCSS}" as="file">

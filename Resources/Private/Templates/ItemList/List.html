@@ -18,12 +18,14 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
 <br />
 
-<div class="tx-yag-items">
-    <f:for each="{listData}" key="rowIndex" as="listRow">
-        <div class="tx-yag-thumb-outerframe tx-yag-item-thumb-outerframe" style="width:{config.itemListConfig.columnRelativeWidth}%">
-            <f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: listRow.image.value, rowIndex: listRow.specialValues.absoluteRowIndex, pager: pager, pagerCollection:pagerCollection}" />
-        </div>
-    </f:for>
+<div id="yag-{config.contextIdentifier}" class="yag-list-wrap yag-gallery" data-yag-gallery-settings='{yag:Javascript.JsonSettings(tsPath:"javaScriptSettings")}'>
+	<div class="tx-yag-items">
+		<f:for each="{listData}" key="rowIndex" as="listRow">
+			<div class="tx-yag-thumb-outerframe tx-yag-item-thumb-outerframe" style="width:{config.itemListConfig.columnRelativeWidth}%">
+				<f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: listRow.image.value, rowIndex: listRow.specialValues.absoluteRowIndex, pager: pager, pagerCollection:pagerCollection}" />
+			</div>
+		</f:for>
+	</div>
 </div>
 
 <div style="clear:both;">&nbsp;</div>
@@ -42,8 +44,6 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
         <script src="{yag:Resource.File(path:file)}" type="text/javascript"></script>
     </f:for>
 </f:if>
-
-<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" position="header"/>
 
 <f:if condition="{config.settings.includeCSSInTemplate}">
     <f:for each="{config.settings.templateIncludeCSS}" as="file">
