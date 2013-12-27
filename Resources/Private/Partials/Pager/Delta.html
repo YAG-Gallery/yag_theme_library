@@ -42,12 +42,12 @@ Tx_PtExtlist_Domain_Model_Pager				The pager object
                                 <li class="number"><extlist:link.action action="{action}" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pageNumber}')}" noCache="1"><span>{pageNumber}</span></extlist:link.action></li>
                             </f:then>
                             <f:else>
-                                <li class="number"><span class="fill">{pageNumber}</span></li>
+                                <li class="number disabled"><span class="fill"><a>{pageNumber}</a></span></li>
                             </f:else>
                         </f:if>
                     </f:then>
                     <f:else>
-                        <li class="number"><span class="cur active">{pageNumber}</span></li>
+                        <li class="number active"><a>{pageNumber}</a></li>
                     </f:else>
                 </f:if>
             </f:for>
@@ -59,5 +59,4 @@ Tx_PtExtlist_Domain_Model_Pager				The pager object
             </f:if>
         </ul>
     </f:if>
-    <div class="cleardiv">&nbsp;</div>
 </f:if>
