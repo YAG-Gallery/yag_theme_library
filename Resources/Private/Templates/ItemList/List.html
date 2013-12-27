@@ -14,9 +14,9 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-
-<f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
-<br />
+<div class="well">
+    <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
+</div>
 
 <div class="tx-yag-items">
     <f:for each="{listData}" key="rowIndex" as="listRow">
@@ -43,7 +43,6 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
     </f:for>
 </f:if>
 
-<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" position="header"/>
 
 <f:if condition="{config.settings.includeCSSInTemplate}">
     <f:for each="{config.settings.templateIncludeCSS}" as="file">

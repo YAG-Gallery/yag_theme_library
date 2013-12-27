@@ -15,24 +15,24 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
 -->
 </extlist:comment>
 
-
-<f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
-<br />
+<div class="well">
+    <f:render partial="EXT:yag_theme_library/Resources/Private/Partials/FilterBox.html" arguments="{filterbox:filterBoxCollection.metaFilterBox}"/>
+</div>
 
 <table class="table table-striped">
     <thead>
-        <tr>
-            <td>#</td>
-            <td></td>
-            <td>Item</td>
-            <td>Details</td>
-        </tr>
-    </thead>
+<tr>
+    <td>#</td>
+    <td></td>
+    <td>Item</td>
+    <td>Details</td>
+</tr>
+</thead>
     <tbody>
-        <f:for each="{listData}" key="rowIndex" as="listRow">
-            <f:alias map="{image: listRow.image.value}">
-                <tr>
-                    <td>{image.uid}</td>
+    <f:for each="{listData}" key="rowIndex" as="listRow">
+    <f:alias map="{image: listRow.image.value}">
+    <tr>
+    <td>{image.uid}</td>
                     <td><f:render partial="{config.itemListConfig.imageThumbPartial}" arguments="{config: config, image: image, pager: pager, pagerCollection:pagerCollection}" /></td>
                     <td>
                         <dl class="dl-horizontal">
@@ -55,7 +55,9 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
                             <dd>{listRow.albumName}&nbsp;</dd>
 
                             <dt>Original</dt>
-                            <dd><a target="_blank" href="{image.sourceUri}">{image.width}px x {image.height}px, <ptx:format.fileSize>{image.fileSize}</ptx:format.fileSize></a></dd>
+                            <dd>
+                                <f:link.action controller="Item" action="download" arguments="{item: image, fileHash: '{image.fileHash->f:format.crop(maxCharacters: 5, append: \'\')}'}">{image.width}px x {image.height}px, <ptx:format.fileSize>{image.fileSize}</ptx:format.fileSize></f:link.action>
+                            </dd>
                         </dl>
 
                     </td>
@@ -82,7 +84,7 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
                                 <dt>Tags</dt>
                                 <dd>
                                     <f:for each="{ptx:explode(string: listRow.tagsCombined.value, delimiter:',')}" as="tag">
-                                        <f:link.action action="submitFilter" arguments="{extlist:namespace.GPArray(nameSpace:'itemList{config.contextIdentifier}.filters.metaFilterBox.tagCloud' arguments:'filterValues:{tag}')}">{tag}</f:link.action>
+                                        <f:link.action class="label label-info" action="submitFilter" arguments="{extlist:namespace.GPArray(nameSpace:'itemList{config.contextIdentifier}.filters.metaFilterBox.tagCloud' arguments:'filterValues:{tag}')}">{tag}</f:link.action>
                                     </f:for>
                                 </dd>
                             </f:if>
@@ -118,8 +120,6 @@ Tx_PtExtlist_Domain_Model_List_ListData listData               List of items in 
         <script src="{yag:Resource.File(path:file)}" type="text/javascript"></script>
     </f:for>
 </f:if>
-
-<yag:Javascript.template templatePath="EXT:yag/Resources/Private/JSTemplates/FancyBox.js" arguments="{yagSettings: '{yag:Javascript.JsonSettings(tsPath:\'fancybox\', onlyKeyValuePairs:1)}'}" position="header"/>
 
 <f:if condition="{config.settings.includeCSSInTemplate}">
     <f:for each="{config.settings.templateIncludeCSS}" as="file">

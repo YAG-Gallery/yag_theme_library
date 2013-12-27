@@ -151,7 +151,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
         }
     }
 
-	pager.itemsPerPage < plugin.tx_yag.settings.themes.library.itemList.itemsPerPage
+	pager.itemsPerPage = 5
 
     rendererChain {
         rendererConfigs {
@@ -263,6 +263,7 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 					partialPath = EXT:yag_theme_library/Resources/Private/Partials/Filter/Options/TagCloudFilter.html
 					label = Tags
 					fieldIdentifier = tag
+					showRowCount = 0
 					countFieldIdentifier = tagCount
 				}
 

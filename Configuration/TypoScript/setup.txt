@@ -13,4 +13,4 @@
 # YAG Library Detail
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:yag_theme_library/Configuration/TypoScript/Themes/LibraryDetail/Theme.ts">
 
-plugin.tx_ptextlist._CSS_DEFAULT_STYLE  >
+plugin.tx_ptextlist._CSS_DEFAULT_STYLE =

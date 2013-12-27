@@ -19,12 +19,12 @@
 
 /* Details */
 .dl-horizontal dd {
-    margin-left: 130px;
+    margin-left: 130px !important;
 }
 
 .dl-horizontal dt {
     float: left;
     clear: left;
-    width: 120px;
+    width: 120px !important;
     text-align: right;
 }

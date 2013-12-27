@@ -24,9 +24,9 @@ Tx_PtExtlist_Domain_Model_Filter_TagCloud           filter                      
 			<f:for each="{filter.options}" key="optionValue" as="option">
 				<li class="tx-ptextlist-filter-tagCloud-item">
 					<div class="field-wrapper">
-						<f:if condition="{option.selected}"><span class="selected"></f:if>
-						<f:link.action title="{option.elementCount} Items" action="submitFilter" arguments="{extlist:namespace.GPArray(object:'{filter}' arguments:'filterValues:{optionValue}')}" noCache="1" style="font-size:{option.fontSize}px; color: {option.color}">{option.value}</f:link.action>
-						<f:if condition="{option.selected}"></span></f:if>
+						<f:if condition="{option.value}">
+                            <f:link.action title="{option.elementCount} Items" action="submitFilter" arguments="{extlist:namespace.GPArray(object:'{filter}' arguments:'filterValues.tag:{option.value}')}" noCache="1" class="label {f:if(condition:option.selected, then:'label-warning', else:'label-info')}">{option.value}</f:link.action>
+                        </f:if>
 					</div>
 				</li>
 			</f:for>
