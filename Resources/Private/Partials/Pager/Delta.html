@@ -27,7 +27,7 @@ Tx_PtExtlist_Domain_Model_Pager				The pager object
         </f:if>
     </div>
     <f:if condition="{pager.itemCount} > {pager.itemsPerPage}">
-        <ul class="tx-ptextlist-pager" id="tx-ptextlist-pager-{pager.pagerIdentifier}">
+        <ul class="tx-ptextlist-pager pagination" id="tx-ptextlist-pager-{pager.pagerIdentifier}">
             <f:if condition="{pager.currentPage} != {pager.firstPage}">
                 <li class="first"><extlist:link.action action="{action}" arguments="{extlist:namespace.GPArray(object:'{pagerCollection}' arguments:'page:{pager.firstPage}')}" noCache="1"><span>&lt;&lt;</span></extlist:link.action></li>
             </f:if>
@@ -47,7 +47,7 @@ Tx_PtExtlist_Domain_Model_Pager				The pager object
                         </f:if>
                     </f:then>
                     <f:else>
-                        <li class="number"><span class="cur">{pageNumber}</span></li>
+                        <li class="number"><span class="cur active">{pageNumber}</span></li>
                     </f:else>
                 </f:if>
             </f:for>
