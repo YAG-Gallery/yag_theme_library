@@ -20,3 +20,15 @@
 .tx-yag-library-imagecolumn {
 	width:200px;
 }
+
+/* Details */
+.dl-horizontal dd {
+    margin-left: 130px;
+}
+
+.dl-horizontal dt {
+    float: left;
+    clear: left;
+    width: 120px;
+    text-align: right;
+}
