@@ -3,7 +3,7 @@
 /***************************************************************
  * Extension Manager/Repository config file for ext "yag_theme_library".
  *
- * Auto generated 27-12-2013 06:20
+ * Auto generated 04-01-2014 10:25
  *
  * Manual updates:
  * Only the data in the array - everything else is removed by next
@@ -29,7 +29,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'modify_tables' => '',
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
-	'version' => '0.3.0-dev',
+	'version' => '0.3.1-dev',
 	'constraints' => array(
 		'depends' => array(
 			'typo3' => '4.5.0-6.2.99',
