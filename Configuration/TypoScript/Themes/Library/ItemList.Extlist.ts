@@ -30,8 +30,6 @@ plugin.tx_yag.settings.themes.library.extlist.itemList {
 
         baseWhereClause (
         	item.uid > 0
-        	AND album.hide = 0
-        	AND gallery.hide = 0
         )
 
         baseGroupByClause (
